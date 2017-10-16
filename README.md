@@ -229,3 +229,10 @@ docker run -it -d --name fluentd_master -p 24225:24225 -p 24225:24224/udp -v /da
 </match>
 ```
 通过上述配置，我们可以将客户端传输过来的日志以不同的方式进行存储（发送到ES、kafka、本地文件）。
+
+- 参考文档：
+```
+http://fluentbit.io/documentation/0.11/
+https://docs.fluentd.org/v0.12/articles/quickstart
+https://github.com/fluent/fluentd/tree/master/example
+```
