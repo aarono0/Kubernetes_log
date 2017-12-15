@@ -42,14 +42,14 @@ Fluent Bit用C编写，具有支持30个扩展的可插拔架构。它快速轻�
 [FILTER]
     Name           kubernetes
     Match          kube.*
-    Kube_URL       https://k8.dpool.sina.com.cn:443
+    Kube_URL       https://k8.hyserver.com.cn:443
     Merge_JSON_Log On
 
 
 [OUTPUT]
     Name          forward
     Match         *
-    Host          10.13.32.252
+    Host          10.222.111.23
     Port          24225
 ```
 
@@ -76,11 +76,11 @@ ADD fluent-bit.conf /fluent-bit/etc/fluent-bit.conf
 ```
 镜像创建：
 ```
-docker build -t registry.dpool.sina.com.cn/dpool/fluent-bit-daemonset_hy:0.11 .
+docker build -t registry.hyserver.com.cn/dpool/fluent-bit-daemonset_hy:0.11 .
 ```
 push到镜像仓库：
 ```
-docker push registry.dpool.sina.com.cn/dpool/fluent-bit-daemonset_hy:0.11
+docker push registry.hyserver.com.cn/dpool/fluent-bit-daemonset_hy:0.11
 ```
 
 #### 3.3 在kubernetes集群的每一个node上创建pod
@@ -107,7 +107,7 @@ spec:
     spec:
       containers:
       - name: fluent-bit
-        image: registry.dpool.sina.com.cn/dpool/fluent-bit-daemonset_hy7:0.11
+        image: registry.hyserver.com.cn/log/fluent-bit-daemonset_hy7:0.11
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
             value: "elasticsearch-logging"
@@ -175,7 +175,7 @@ RUN fluent-gem install fluent-plugin-kafka
 
 #### 5.2 打镜像
 ```
-docker build -t registry.dpool.sina.com.cn/dpool/fluentd_forest_elasticsearch_kafka:v0.14.15 .
+docker build -t registry.hyserver.com.cn/hyserver/fluentd_forest_elasticsearch_kafka:v0.14.15 .
 ```
 
 #### 5.3 启动一个服务端容器
